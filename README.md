@@ -52,6 +52,4 @@ o	Make Payments
 •	Profile Management 
 o	Update Account Details
 
-DATE: 24/03/2026                                                                  Student Name & Signature:           
-                                                                                                 Farhin A Mahajan:
-                                                                          Ashwini K Nagpure:
+                                                            
