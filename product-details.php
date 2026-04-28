@@ -41,7 +41,7 @@ include 'includes/header.php';
             <div class="grid grid-cols-4 gap-4 mt-6">
                 <?php for($i=1; $i<=4; $i++): ?>
                 <div class="glass rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-primary transition shadow-md">
-                    <img src="https://loremflickr.com/400/300/<?php echo urlencode($product['name'] . ' ' . $i); ?>,product" class="w-full h-24 object-cover">
+                    <img src="<?php echo getProductImage($product['image'], $product['name'] . $i); ?>" class="w-full h-24 object-cover">
                 </div>
                 <?php endfor; ?>
             </div>

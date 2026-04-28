@@ -28,7 +28,7 @@ function getFlashMessage() {
     return null;
 }
 
-function uploadImage($file, $targetDir = "assets/images/") {
+function uploadImage($file, $targetDir = "assets/img/") {
     if (!isset($file) || $file['error'] !== UPLOAD_ERR_OK) {
         return null;
     }
@@ -58,15 +58,27 @@ function getProductImage($image, $name, $isAdmin = false) {
         return $image;
     }
     
-    // Check if image exists in the assets/images folder
+    // Check if image exists in the assets/img folder
     if (!empty($image)) {
         // Check relative to the includes directory
-        if (file_exists(__DIR__ . "/../assets/images/" . $image)) {
-            return SITE_URL . "assets/images/" . $image;
+        if (file_exists(__DIR__ . "/../assets/img/" . $image)) {
+            return SITE_URL . "assets/img/" . $image;
         }
     }
     
-    // Fallback to a working placeholder service
+    // Fallback to the first available image in assets/img if it exists
+    $imgDir = __DIR__ . "/../assets/img/";
+    if (is_dir($imgDir)) {
+        $files = glob($imgDir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+        if (!empty($files)) {
+            // For a "proper linking mechanism", we could use the name to pick a semi-consistent image
+            // but for now let's just use the first one or a random one from the folder
+            $index = abs(crc32($name)) % count($files);
+            return SITE_URL . "assets/img/" . basename($files[$index]);
+        }
+    }
+    
+    // Final fallback to a working placeholder service
     $query = urlencode($name);
     return "https://loremflickr.com/800/600/" . $query . ",product";
 }

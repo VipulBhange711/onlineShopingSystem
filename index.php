@@ -48,7 +48,7 @@ include 'includes/header.php';
         </div>
     </div>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Online Shopping">
+        <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="<?php echo getProductImage('hero.jpg', 'Shopping Hero'); ?>" alt="Online Shopping">
     </div>
 </div>
 
@@ -64,7 +64,7 @@ include 'includes/header.php';
             <?php foreach($home_categories as $cat): ?>
             <div class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                 <div class="relative w-full h-64 bg-white dark:bg-gray-700 overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                    <img src="https://loremflickr.com/800/600/<?php echo urlencode($cat['name']); ?>" alt="<?php echo $cat['name']; ?>" class="w-full h-full object-center object-cover">
+                    <img src="<?php echo getProductImage($cat['name'] . '.jpg', $cat['name']); ?>" alt="<?php echo $cat['name']; ?>" class="w-full h-full object-center object-cover">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
                     <div>
